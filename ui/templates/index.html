@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent OS Command Center</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Agent OS</h1>
+        <span class="port">:{{ port }}</span>
+      </div>
+      <nav>
+        <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+        <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+        <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+        <a href="#experiments" class="nav-link" data-section="experiments">Experiments</a>
+        <a href="#journal" class="nav-link" data-section="journal">Journal</a>
+        <a href="#outputs" class="nav-link" data-section="outputs">Outputs</a>
+        <a href="#goals" class="nav-link" data-section="goals">Goals</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section id="dashboard" class="section active">
+        <h2>Dashboard</h2>
+        <div class="cards" id="status-cards"></div>
+        <div class="panel">
+          <h3>Quick Actions</h3>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'fetch_news.py', ['--max', '10'])">Fetch News</button>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'ai-lab'])">Generate AI Lab Insight</button>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'sebenza'])">Generate Sebenza Insight</button>
+          <button class="btn" onclick="runSkill('infinite-context')">Run Context Consolidation</button>
+          <button class="btn" onclick="runSkill('weekly-audit')">Run Weekly Audit</button>
+        </div>
+        <div class="panel log-panel">
+          <h3>Live Log</h3>
+          <pre id="live-log">Ready.</pre>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div id="projects-list"></div>
+      </section>
+
+      <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div id="skills-list"></div>
+      </section>
+
+      <section id="experiments" class="section">
+        <h2>Experiments</h2>
+        <div class="panel">
+          <h3>Hermes Oracle Lite</h3>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'fetch_news.py', ['--max', '10'])">Fetch News</button>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'ai-lab'])">Generate AI Lab Insight</button>
+          <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'sebenza'])">Generate Sebenza Insight</button>
+        </div>
+      </section>
+
+      <section id="journal" class="section">
+        <h2>Journal</h2>
+        <input type="date" id="journal-date" />
+        <button class="btn" onclick="loadJournal()">Load</button>
+        <div class="panel">
+          <pre id="journal-content">Select a date and click Load.</pre>
+        </div>
+      </section>
+
+      <section id="outputs" class="section">
+        <h2>Outputs</h2>
+        <div id="outputs-list"></div>
+        <div class="panel">
+          <pre id="output-content">Click an output to view.</pre>
+        </div>
+      </section>
+
+      <section id="goals" class="section">
+        <h2>Goals</h2>
+        <div class="panel">
+          <textarea id="goals-editor"></textarea>
+          <button class="btn" onclick="saveGoals()">Save Goals</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

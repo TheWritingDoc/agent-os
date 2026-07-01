@@ -1,10 +1,10 @@
 {
   "score": 8,
   "pass": true,
-  "critique": "The artifact directly ties a real news event (Godot's AI-code policy) to the project's actual Phase 1 components \u2014 Hermes skills, cron jobs, Journal, Infinite Context Engine \u2014 named explicitly in context.md and goals.md, so relevance is strong and earned rather than asserted. It reads clearly, makes a genuine point (produce vs. understand/debug) rather than a forced analogy, and comes in at roughly 96 words, just under the limit. The main weaknesses are stylistic: three em-dash interruptions in two sentences make it slightly clunky, and it ends on a vague call to action ('worth building that review discipline') without specifying what that discipline would actually look like in the vault.",
+  "critique": "The artifact directly ties a real news event to the project's actual mechanisms (judge retry loops, Hermes Oracle Lite, Agent OS) rather than reaching for a generic lesson, and it correctly reframes the Godot story as a trust-in-output issue rather than an anti-AI stance. It's under the word limit (59 words) and avoids forced analogies entirely \u2014 the parallel drawn is literal and structural, not metaphorical. The main weakness is density: the first sentence is a long compound clause with an em-dash aside, which slows a quick read, and 'defensible, not just fast' is a slightly generic closer that could be sharpened into a more concrete takeaway or action item.",
   "improvements": [
-    "Cut one of the em-dash asides to tighten the opening sentence and reduce clutter.",
-    "Replace the vague closing ('worth building that review discipline') with a concrete next step, e.g. a specific review checklist item to add before shipping a skill.",
-    "Trim a few more words to leave margin under the 100-word cap rather than landing right at the edge."
+    "Split the opening sentence into two shorter ones for faster scanning",
+    "Replace the closing abstraction ('output stays defensible, not just fast') with a concrete next step, e.g. naming which Hermes Oracle Lite step needs a human review gate",
+    "Trim 'a trust-in-output problem, not a tooling ban' \u2014 it's accurate but adds a clause that isn't essential to the takeaway"
   ]
 }

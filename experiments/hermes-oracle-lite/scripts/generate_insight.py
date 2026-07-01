@@ -4,7 +4,7 @@ Generate a short insight/post from news, with judge retry loop.
 Usage:
   python3 generate_insight.py --project sebenza --news-file ~/agent-os/output/hermes-oracle-news.json
 """
-import argparse, json, os, subprocess
+import argparse, json, os, subprocess, sys
 from datetime import datetime
 
 VAULT = os.path.expanduser("~/agent-os")
@@ -146,9 +146,9 @@ def main():
         json.dump(result, f, indent=2)
 
     print(json.dumps(result, indent=2))
-    print(f"\n{'PASSED' if passed else 'FAILED'} — score: {score}/10")
+    print(f"\n{'PASSED' if passed else 'FAILED'} — score: {score}/10", file=sys.stderr)
     if journal_path:
-        print(f"Saved to journal: {journal_path}")
+        print(f"Saved to journal: {journal_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":
