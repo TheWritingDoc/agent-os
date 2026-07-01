@@ -1,9 +1,10 @@
 {
-  "score": 9.0,
+  "score": 8,
   "pass": true,
-  "critique": "Heuristic fallback. Reason: Claude Code not available. Basic length and structure check passed.",
+  "critique": "The artifact directly ties a real news event (Godot's AI-code policy) to the project's actual Phase 1 components \u2014 Hermes skills, cron jobs, Journal, Infinite Context Engine \u2014 named explicitly in context.md and goals.md, so relevance is strong and earned rather than asserted. It reads clearly, makes a genuine point (produce vs. understand/debug) rather than a forced analogy, and comes in at roughly 96 words, just under the limit. The main weaknesses are stylistic: three em-dash interruptions in two sentences make it slightly clunky, and it ends on a vague call to action ('worth building that review discipline') without specifying what that discipline would actually look like in the vault.",
   "improvements": [
-    "Re-run with Claude Code for real critique",
-    "Check against criteria: clear"
+    "Cut one of the em-dash asides to tighten the opening sentence and reduce clutter.",
+    "Replace the vague closing ('worth building that review discipline') with a concrete next step, e.g. a specific review checklist item to add before shipping a skill.",
+    "Trim a few more words to leave margin under the 100-word cap rather than landing right at the edge."
   ]
 }

@@ -1,9 +1,10 @@
 {
-  "score": 8.5,
+  "score": 7.2,
   "pass": true,
-  "critique": "Heuristic fallback. Reason: Claude Code not available. Basic length and structure check passed.",
+  "critique": "Heuristic fallback. Reason: Claude output was not valid JSON. Basic length and structure check passed.",
   "improvements": [
     "Re-run with Claude Code for real critique",
-    "Check against criteria: clear, accurate, concise, useful for agent context"
-  ]
+    "Check against criteria: relevant to project, clear, compelling, under 100 words"
+  ],
+  "note": "Raw Claude output: **Flagging before I answer:** this artifact's core claim \u2014 that \"Claude Code may be embedding steganographic markers in outbound requests\" \u2014 is not something I can verify, and I'm not aware of any cre"
 }

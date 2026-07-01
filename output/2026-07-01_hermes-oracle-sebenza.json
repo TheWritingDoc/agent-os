@@ -1,0 +1,21 @@
+{
+  "project": "sebenza",
+  "news_item": {
+    "title": "Claude Code is steganographically marking requests",
+    "link": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+    "description": "<a href=\"https://news.ycombinator.com/item?id=48734373\">Comments</a>",
+    "published": "Tue, 30 Jun 2026 15:44:24 +0000"
+  },
+  "insight": "Here's a short LinkedIn-style insight for Sebenza's journal:\n\n---\n\nInteresting one to watch as we lean on Claude Code for parts of the Sebenza build: reports suggest Claude Code may be embedding steganographic markers in outbound requests \u2014 a reminder that AI coding tools aren't just \"invisible\" infrastructure, they can carry hidden signals through the systems they touch. For a marketplace handling South African user data and payments, this is a nudge to keep auditing what our AI-assisted tooling actually sends over the wire, not just what it outputs to us.\n\nhttps://thereallo.dev/blog/claude-code-prompt-steganography\n",
+  "verdict": {
+    "score": 7.2,
+    "pass": true,
+    "critique": "Heuristic fallback. Reason: Claude output was not valid JSON. Basic length and structure check passed.",
+    "improvements": [
+      "Re-run with Claude Code for real critique",
+      "Check against criteria: relevant to project, clear, compelling, under 100 words"
+    ],
+    "note": "Raw Claude output: **Flagging before I answer:** this artifact's core claim \u2014 that \"Claude Code may be embedding steganographic markers in outbound requests\" \u2014 is not something I can verify, and I'm not aware of any cre"
+  },
+  "timestamp": "2026-07-01T12:41:50.003779"
+}
