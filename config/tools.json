@@ -1,0 +1,76 @@
+{
+  "tools": [
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "type": "terminal",
+      "description": "Anthropic's CLI coding agent",
+      "command": "claude",
+      "url": null,
+      "icon": "💬"
+    },
+    {
+      "id": "claude-web",
+      "name": "Claude Web",
+      "type": "web",
+      "description": "Claude.ai chat interface",
+      "command": null,
+      "url": "https://claude.ai",
+      "icon": "🌐"
+    },
+    {
+      "id": "codex",
+      "name": "OpenAI Codex",
+      "type": "terminal",
+      "description": "OpenAI's CLI coding agent",
+      "command": "codex",
+      "url": null,
+      "icon": "🧠"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "type": "web",
+      "description": "OpenAI ChatGPT web interface",
+      "command": null,
+      "url": "https://chat.openai.com",
+      "icon": "🤖"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "type": "app",
+      "description": "AI-powered code editor",
+      "command": "/mnt/c/Users/MSI CYBORG/AppData/Local/Programs/cursor/Cursor.exe",
+      "url": null,
+      "icon": "✏️"
+    },
+    {
+      "id": "glm",
+      "name": "GLM / ZAI",
+      "type": "terminal",
+      "description": "Zhipu GLM CLI (requires ZAI_API_KEY)",
+      "command": "zai",
+      "url": null,
+      "icon": "🔮"
+    },
+    {
+      "id": "hermes",
+      "name": "Hermes Agent",
+      "type": "terminal",
+      "description": "Our custom agent orchestrator",
+      "command": "hermes",
+      "url": null,
+      "icon": "🏛️"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "type": "app",
+      "description": "Knowledge base and second brain",
+      "command": "/mnt/c/Users/MSI CYBORG/AppData/Local/Programs/Obsidian/Obsidian.exe",
+      "url": null,
+      "icon": "📝"
+    }
+  ]
+}
