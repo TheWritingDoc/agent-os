@@ -9,17 +9,6 @@ const api = async (path, opts = {}) => {
   return res.json();
 };
 
-// Navigation
-for (const link of document.querySelectorAll('.nav-link')) {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    link.classList.add('active');
-    document.getElementById(link.dataset.section).classList.add('active');
-  });
-}
-
 // Dashboard
 async function loadStatus() {
   const s = await api('/api/status');
@@ -32,47 +21,6 @@ async function loadStatus() {
       <div class="card"><div class="value">${s.tools_count}</div><div class="label">AI Tools</div></div>
     `;
   }
-}
-
-// Projects
-async function loadProjects() {
-  const projects = await api('/api/projects');
-  const el = document.getElementById('projects-list');
-  if (!el) return;
-  el.innerHTML = projects.map(p => `
-    <div class="list-item" onclick="viewProject('${p.id}')">
-      <h4>${p.id}</h4>
-      <p>${p.context.slice(0, 120).replace(/\n/g, ' ')}...</p>
-    </div>
-  `).join('');
-}
-
-function viewProject(id) {
-  log(`Selected project: ${id}`);
-}
-
-// Skills
-async function loadSkills() {
-  const skills = await api('/api/skills');
-  const el = document.getElementById('skills-list');
-  if (!el) return;
-  el.innerHTML = skills.map(s => `
-    <div class="list-item" onclick="runSkill('${s.id}')">
-      <h4>${s.name}</h4>
-      <p>${s.description}</p>
-    </div>
-  `).join('');
-}
-
-async function runSkill(skill) {
-  log(`Running skill: ${skill}...`);
-  const res = await api('/api/run/skill', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ skill })
-  });
-  log(`Skill ${skill} finished. Code: ${res.code}.\nStdout:\n${res.stdout.slice(0, 1000)}\nStderr:\n${res.stderr.slice(0, 500)}`);
-  loadStatus();
 }
 
 // Tools
@@ -106,6 +54,30 @@ async function launchTool(toolId) {
     body: JSON.stringify({ tool: toolId })
   });
   log(`Launch ${toolId}: ${res.ok ? 'OK' : 'FAILED'} — ${res.message || res.error || ''}`);
+}
+
+// Skills
+async function loadSkills() {
+  const skills = await api('/api/skills');
+  const el = document.getElementById('skills-list');
+  if (!el) return;
+  el.innerHTML = skills.map(s => `
+    <div class="list-item" onclick="runSkill('${s.id}')">
+      <h4>${s.name}</h4>
+      <p>${s.description}</p>
+    </div>
+  `).join('');
+}
+
+async function runSkill(skill) {
+  log(`Running skill: ${skill}...`);
+  const res = await api('/api/run/skill', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ skill })
+  });
+  log(`Skill ${skill} finished. Code: ${res.code}.\nStdout:\n${res.stdout.slice(0, 1000)}\nStderr:\n${res.stderr.slice(0, 500)}`);
+  loadStatus();
 }
 
 // Experiments
@@ -147,13 +119,13 @@ async function viewOutput(name) {
 }
 
 async function syncToObsidian(name) {
-  log(`Syncing output ${name} to Obsidian...`);
+  log(`Syncing ${name} to Obsidian...`);
   const res = await api('/api/sync/obsidian', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name })
   });
-  log(`Obsidian sync: ${res.ok ? 'OK' : 'FAILED'} — ${res.message || res.error || ''}`);
+  log(`Obsidian sync: ${res.ok ? 'OK' : 'FAILED'} — ${res.path || res.error || ''}`);
 }
 
 // Goals
@@ -172,13 +144,3 @@ async function saveGoals() {
   });
   log('Goals saved.');
 }
-
-// Init
-const dateInput = document.getElementById('journal-date');
-if (dateInput) dateInput.valueAsDate = new Date();
-loadStatus();
-loadProjects();
-loadSkills();
-loadTools();
-loadOutputs();
-loadGoals();

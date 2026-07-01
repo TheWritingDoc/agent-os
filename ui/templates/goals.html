@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="goals" class="section active">
+  <h2>Goals</h2>
+  <div class="panel">
+    <textarea id="goals-editor"></textarea>
+    <button class="btn" onclick="saveGoals()">Save Goals</button>
+    <button class="btn secondary" onclick="syncToObsidian('goals')">Sync to Obsidian</button>
+  </div>
+</section>
+
+<script>
+  loadGoals();
+</script>
+{% endblock %}

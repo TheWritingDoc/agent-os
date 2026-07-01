@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="tools" class="section active">
+  <h2>AI Tools</h2>
+  <p class="muted">Launch terminal apps or open web tools directly. Outputs sync to Obsidian.</p>
+  <div id="tools-list"></div>
+</section>
+
+<script>
+  loadTools();
+</script>
+{% endblock %}

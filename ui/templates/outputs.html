@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="outputs" class="section active">
+  <h2>Outputs</h2>
+  <div id="outputs-list"></div>
+  <div class="panel">
+    <pre id="output-content">Click an output to view.</pre>
+    <button class="btn" id="sync-output-btn" style="display:none" onclick="syncCurrentOutput()">Sync to Obsidian</button>
+  </div>
+</section>
+
+<script>
+  let currentOutputName = null;
+  function syncCurrentOutput() {
+    if (currentOutputName) syncToObsidian(currentOutputName);
+  }
+  window.viewOutput = async function(name) {
+    currentOutputName = name;
+    const o = await api(`/api/output/${name}`);
+    document.getElementById('output-content').textContent = JSON.stringify(o, null, 2);
+    document.getElementById('sync-output-btn').style.display = 'inline-block';
+  };
+  loadOutputs();
+</script>
+{% endblock %}

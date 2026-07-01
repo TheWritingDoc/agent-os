@@ -1,11 +1,17 @@
 {
-  "fetched": "2026-07-01T15:02:21.146268",
+  "fetched": "2026-07-01T17:03:52.147002",
   "items": [
     {
-      "title": "Claude Code is steganographically marking requests",
-      "link": "https://thereallo.dev/blog/claude-code-prompt-steganography",
-      "description": "<a href=\"https://news.ycombinator.com/item?id=48734373\">Comments</a>",
-      "published": "Tue, 30 Jun 2026 15:44:24 +0000"
+      "title": "Nintendo has raised its employees base salary by 10%",
+      "link": "https://mynintendonews.com/2026/06/26/nintendo-has-raised-its-employees-base-salary-by-10/",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48745113\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 11:35:20 +0000"
+    },
+    {
+      "title": "Manufact (YC S25) Is Hiring a Developer Advocate in SF",
+      "link": "https://www.ycombinator.com/companies/manufact/jobs/4cyWd6S-developer-advocate-partnerships-devrel",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48746331\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 13:22:24 +0000"
     },
     {
       "title": "Claude Sonnet 5",
@@ -14,10 +20,46 @@
       "published": "Tue, 30 Jun 2026 17:59:52 +0000"
     },
     {
-      "title": "Nintendo has raised its employees base salary by 10%",
-      "link": "https://mynintendonews.com/2026/06/26/nintendo-has-raised-its-employees-base-salary-by-10/",
-      "description": "<a href=\"https://news.ycombinator.com/item?id=48745113\">Comments</a>",
-      "published": "Wed, 01 Jul 2026 11:35:20 +0000"
+      "title": "Godot will no longer accept AI-authored code contributions",
+      "link": "https://www.pcgamer.com/gaming-industry/open-source-game-engine-godot-will-no-longer-accept-ai-authored-code-contributions-we-cant-trust-heavy-users-of-ai-to-understand-their-code-enough-to-fix-it/",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48743472\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 07:43:22 +0000"
+    },
+    {
+      "title": "Sony Deletes 551 Movies PlayStation Owners Paid For",
+      "link": "https://reclaimthenet.org/sony-deletes-551-studiocanal-movies-playstation-owners-paid-for",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48747389\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 14:26:07 +0000"
+    },
+    {
+      "title": "Claude Code is steganographically marking requests",
+      "link": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48734373\">Comments</a>",
+      "published": "Tue, 30 Jun 2026 15:44:24 +0000"
+    },
+    {
+      "title": "Claude Science",
+      "link": "https://claude.com/product/claude-science",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48735770\">Comments</a>",
+      "published": "Tue, 30 Jun 2026 17:07:41 +0000"
+    },
+    {
+      "title": "Why I Stopped Arguing with People",
+      "link": "https://wangcong.org/2026-06-30-why-i-stopped-arguing-with-people.html",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48746445\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 13:29:29 +0000"
+    },
+    {
+      "title": "Asahi Linux 7.1 Progress Report",
+      "link": "https://asahilinux.org/2026/06/progress-report-7-1/",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48744518\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 10:07:04 +0000"
+    },
+    {
+      "title": "Single Dose of Frog-Derived Gut Bacterium Eradicates 100% of Tumors in Mice",
+      "link": "https://www.thefocalpoints.com/p/new-study-frog-derived-gut-bacterium",
+      "description": "<a href=\"https://news.ycombinator.com/item?id=48744232\">Comments</a>",
+      "published": "Wed, 01 Jul 2026 09:21:44 +0000"
     }
   ]
 }

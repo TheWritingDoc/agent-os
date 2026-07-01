@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="projects" class="section active">
+  <h2>Projects</h2>
+  <p class="muted">Grid view, full view, live view, and zoom into any project.</p>
+
+  <div class="toolbar">
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="grid">Grid</button>
+      <button class="view-btn" data-view="full">Full View</button>
+      <button class="view-btn" data-view="live">Live View</button>
+    </div>
+    <button class="btn secondary" onclick="loadProjects()">Refresh</button>
+    <button class="btn" onclick="syncAllProjectsToObsidian()">Sync All to Obsidian</button>
+  </div>
+
+  <div id="projects-grid" class="projects-grid"></div>
+</section>
+
+<div id="project-modal" class="project-card zoomed" style="display:none;">
+  <div class="project-cover" id="modal-cover">
+    <span id="modal-emoji">🚀</span>
+    <span class="live-badge">Live</span>
+  </div>
+  <div class="zoom-content">
+    <div class="zoom-header">
+      <h2 id="modal-title">Project</h2>
+      <button class="zoom-close" onclick="closeModal()">Close ✕</button>
+    </div>
+    <div class="zoom-section">
+      <h4>Context</h4>
+      <pre id="modal-context"></pre>
+    </div>
+    <div class="zoom-section">
+      <h4>Goals</h4>
+      <pre id="modal-goals"></pre>
+    </div>
+    <div class="zoom-section">
+      <h4>Actions</h4>
+      <div class="project-actions">
+        <button class="btn" id="modal-run-insight">Generate Insight</button>
+        <button class="btn blue" id="modal-open-obsidian">Open in Obsidian</button>
+        <button class="btn purple" id="modal-sync-obsidian">Sync to Obsidian</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentProjects = [];
+  let currentView = 'grid';
+
+  async function loadProjects() {
+    const grid = document.getElementById('projects-grid');
+    grid.innerHTML = '<p class="muted">Loading projects...</p>';
+    currentProjects = await api('/api/projects');
+    renderProjects();
+  }
+
+  function renderProjects() {
+    const grid = document.getElementById('projects-grid');
+    if (!currentProjects.length) {
+      grid.innerHTML = '<p class="muted">No projects found.</p>';
+      return;
+    }
+    grid.innerHTML = currentProjects.map(p => `
+      <div class="project-card" data-id="${p.id}" onclick="openProject('${p.id}')">
+        <div class="project-cover">
+          <span>${projectEmoji(p.name)}</span>
+          <span class="live-badge">Live</span>
+        </div>
+        <div class="project-body">
+          <h4>${p.name}</h4>
+          <p>${p.context.slice(0, 120).replace(/\n/g, ' ')}...</p>
+          <div class="project-meta">
+            <span class="badge active">Active</span>
+            <span class="badge">${new Date(p.updated * 1000).toLocaleDateString()}</span>
+          </div>
+          <div class="project-actions" onclick="event.stopPropagation()">
+            <button class="btn" onclick="generateInsight('${p.id}')">Insight</button>
+            <button class="btn secondary" onclick="syncProjectToObsidian('${p.id}')">Sync</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    applyView(currentView);
+  }
+
+  function projectEmoji(name) {
+    const n = name.toLowerCase();
+    if (n.includes('sebenza')) return '💼';
+    if (n.includes('rugby')) return '🏉';
+    if (n.includes('ai')) return '🧠';
+    return '🚀';
+  }
+
+  function applyView(view) {
+    currentView = view;
+    const grid = document.getElementById('projects-grid');
+    grid.classList.remove('full-view', 'live-view');
+    if (view === 'full') grid.classList.add('full-view');
+    if (view === 'live') grid.classList.add('live-view');
+  }
+
+  for (const btn of document.querySelectorAll('.view-btn')) {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyView(btn.dataset.view);
+    });
+  }
+
+  function openProject(id) {
+    const p = currentProjects.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('modal-title').textContent = p.name;
+    document.getElementById('modal-emoji').textContent = projectEmoji(p.name);
+    document.getElementById('modal-context').textContent = p.context;
+    document.getElementById('modal-goals').textContent = p.goals;
+    document.getElementById('modal-run-insight').onclick = () => generateInsight(p.id);
+    document.getElementById('modal-open-obsidian').onclick = () => openProjectInObsidian(p.id);
+    document.getElementById('modal-sync-obsidian').onclick = () => syncProjectToObsidian(p.id);
+    const modal = document.getElementById('project-modal');
+    modal.style.display = 'block';
+    // small delay to allow display:block before adding zoomed class for transition
+    setTimeout(() => modal.classList.add('zoomed'), 10);
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('project-modal');
+    modal.classList.remove('zoomed');
+    setTimeout(() => modal.style.display = 'none', 250);
+  }
+
+  async function generateInsight(projectId) {
+    log(`Generating insight for ${projectId}...`);
+    const res = await api('/api/run/experiment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ experiment: 'hermes-oracle-lite', script: 'generate_insight.py', args: ['--project', projectId] })
+    });
+    log(`Insight for ${projectId} done. Code: ${res.code}.\nStdout:\n${res.stdout.slice(0, 2000)}`);
+  }
+
+  async function syncProjectToObsidian(projectId) {
+    log(`Syncing project ${projectId} to Obsidian...`);
+    const p = currentProjects.find(x => x.id === projectId);
+    if (!p) return;
+    const res = await api('/api/sync/project/obsidian', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ project: projectId })
+    });
+    log(`Sync ${projectId}: ${res.ok ? 'OK' : 'FAILED'} — ${res.path || res.error || ''}`);
+  }
+
+  function openProjectInObsidian(projectId) {
+    launchTool('obsidian');
+    log(`Opened Obsidian. Project ${projectId} notes are in Agent OS/Projects/${projectId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`);
+  }
+
+  async function syncAllProjectsToObsidian() {
+    for (const p of currentProjects) {
+      await syncProjectToObsidian(p.id);
+    }
+    log('All projects synced to Obsidian.');
+  }
+
+  loadProjects();
+</script>
+{% endblock %}

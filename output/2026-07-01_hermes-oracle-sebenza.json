@@ -1,21 +1,23 @@
 {
   "project": "sebenza",
   "news_item": {
-    "title": "Claude Code is steganographically marking requests",
-    "link": "https://thereallo.dev/blog/claude-code-prompt-steganography",
-    "description": "<a href=\"https://news.ycombinator.com/item?id=48734373\">Comments</a>",
-    "published": "Tue, 30 Jun 2026 15:44:24 +0000"
+    "title": "Claude Sonnet 5",
+    "link": "https://www.anthropic.com/news/claude-sonnet-5",
+    "description": "<a href=\"https://news.ycombinator.com/item?id=48736605\">Comments</a>",
+    "published": "Tue, 30 Jun 2026 17:59:52 +0000"
   },
-  "insight": "Here's a short LinkedIn-style insight for Sebenza's journal:\n\n---\n\nInteresting one to watch as we lean on Claude Code for parts of the Sebenza build: reports suggest Claude Code may be embedding steganographic markers in outbound requests \u2014 a reminder that AI coding tools aren't just \"invisible\" infrastructure, they can carry hidden signals through the systems they touch. For a marketplace handling South African user data and payments, this is a nudge to keep auditing what our AI-assisted tooling actually sends over the wire, not just what it outputs to us.\n\nhttps://thereallo.dev/blog/claude-code-prompt-steganography\n",
+  "insight": "Claude Sonnet 5 just launched from Anthropic, and it's a direct win for our \"AI-assisted listing creation\" goal this month \u2014 stronger reasoning means auto-generated job/service descriptions and SEO copy should need less manual cleanup before they go live on Sebenza. Worth trialing as the default model for the listing-generation and lead-onboarding-email experiments we're already planning. https://www.anthropic.com/news/claude-sonnet-5\n",
   "verdict": {
-    "score": 7.2,
+    "score": 8,
     "pass": true,
-    "critique": "Heuristic fallback. Reason: Claude output was not valid JSON. Basic length and structure check passed.",
+    "critique": "The artifact directly ties Claude Sonnet 5's launch to the month's 'AI-assisted listing creation' goal and even names the specific planned experiments (listing-generation, lead-onboarding-email) it would apply to, making it concrete and actionable rather than generic AI-news trivia. It's clear, free of forced analogies, and comfortably under the word limit (~56 words). The main weakness is that it asserts benefits ('stronger reasoning,' 'less manual cleanup') as settled fact without any evidence or caveat, and it stops short of proposing a concrete next action (e.g., a small trial or cost check), leaving it slightly promotional rather than a fully actionable recommendation.",
     "improvements": [
-      "Re-run with Claude Code for real critique",
-      "Check against criteria: relevant to project, clear, compelling, under 100 words"
-    ],
-    "note": "Raw Claude output: **Flagging before I answer:** this artifact's core claim \u2014 that \"Claude Code may be embedding steganographic markers in outbound requests\" \u2014 is not something I can verify, and I'm not aware of any cre"
+      "Add a concrete next step, e.g., 'trial it on 5-10 draft listings this week and compare edit time vs. current model' rather than just 'worth trialing'",
+      "Flag that the reasoning/quality improvement is a claim to verify, not a given \u2014 note what evidence (if any) supports 'less manual cleanup'",
+      "Mention pricing/cost or migration effort briefly, since switching the default model has budget and integration implications for a lean project like Sebenza"
+    ]
   },
-  "timestamp": "2026-07-01T12:41:50.003779"
+  "passed": true,
+  "journal_path": "/home/msicyborg/agent-os/journal/2026-07-01.md",
+  "timestamp": "2026-07-01T17:06:20.271520"
 }

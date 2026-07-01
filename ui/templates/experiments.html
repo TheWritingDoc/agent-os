@@ -1,21 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<section id="dashboard" class="section active">
-  <h2>Dashboard</h2>
-  <div class="cards" id="status-cards"></div>
-
+<section id="experiments" class="section active">
+  <h2>Experiments</h2>
   <div class="panel">
-    <h3>Quick Actions</h3>
+    <h3>Hermes Oracle Lite</h3>
     <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'fetch_news.py', ['--max', '10'])">Fetch News</button>
     <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'ai-lab'])">Generate AI Lab Insight</button>
     <button class="btn" onclick="runExperiment('hermes-oracle-lite', 'generate_insight.py', ['--project', 'sebenza'])">Generate Sebenza Insight</button>
-    <button class="btn secondary" onclick="runSkill('weekly-audit')">Run Weekly Audit</button>
-    <button class="btn purple" onclick="launchTool('obsidian')">Open Obsidian</button>
-    <button class="btn blue" onclick="window.location.href='/projects'">View Projects</button>
   </div>
 </section>
-
-<script>
-  loadStatus();
-</script>
 {% endblock %}

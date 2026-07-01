@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="journal" class="section active">
+  <h2>Journal</h2>
+  <input type="date" id="journal-date" />
+  <button class="btn" onclick="loadJournal()">Load</button>
+  <button class="btn secondary" onclick="syncToObsidian('journal')">Sync to Obsidian</button>
+  <div class="panel">
+    <pre id="journal-content">Select a date and click Load.</pre>
+  </div>
+</section>
+
+<script>
+  const dateInput = document.getElementById('journal-date');
+  if (dateInput) dateInput.valueAsDate = new Date();
+  loadJournal();
+</script>
+{% endblock %}
