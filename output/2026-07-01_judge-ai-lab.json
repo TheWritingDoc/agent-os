@@ -1,0 +1,9 @@
+{
+  "score": 9.0,
+  "pass": true,
+  "critique": "Heuristic fallback. Reason: Claude Code not available. Basic length and structure check passed.",
+  "improvements": [
+    "Re-run with Claude Code for real critique",
+    "Check against criteria: clear"
+  ]
+}

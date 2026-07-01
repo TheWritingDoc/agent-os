@@ -1,0 +1,5 @@
+{
+  "error": "Builder produced no output. LLM providers may be unavailable.",
+  "task": "Write a tagline for Sebenza",
+  "project": "sebenza"
+}
